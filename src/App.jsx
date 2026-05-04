@@ -117,9 +117,9 @@ function ChatBot() {
     setMessages(prev => [...prev, { role: "user", text: userMsg }]);
     setLoading(true);
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("/.netlify/functions/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": import.meta.env.VITE_ANTHROPIC_KEY, "anthropic-dangerous-direct-browser-access": "true", "anthropic-version": "2023-06-01" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           model: "claude-haiku-4-5-20251001",
           max_tokens: 1000,
@@ -311,9 +311,9 @@ function AdminPanel({ cases, setCases, onClose }) {
 
     // Use Claude to auto-fill form fields from the NCMEC poster page
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': import.meta.env.VITE_ANTHROPIC_KEY, 'anthropic-dangerous-direct-browser-access': 'true', 'anthropic-version': '2023-06-01' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5-20251001',
           max_tokens: 600,
@@ -812,9 +812,9 @@ function LegalBotScreen() {
       : 'The user has not selected a specific state yet. Cover the southeastern US states you know about (GA, FL, SC, NC, AL) or ask them to specify.';
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': import.meta.env.VITE_ANTHROPIC_KEY, 'anthropic-dangerous-direct-browser-access': 'true', 'anthropic-version': '2023-06-01' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5-20251001',
           max_tokens: 1000,
@@ -1084,9 +1084,9 @@ function FlyerScreen({ setScreen }) {
     if (!flyerText.trim()) return;
     setParsing(true);
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': import.meta.env.VITE_ANTHROPIC_KEY, 'anthropic-dangerous-direct-browser-access': 'true', 'anthropic-version': '2023-06-01' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5-20251001',
           max_tokens: 500,
