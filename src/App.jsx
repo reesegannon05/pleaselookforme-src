@@ -121,7 +121,7 @@ function ChatBot() {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": import.meta.env.VITE_ANTHROPIC_KEY, "anthropic-dangerous-direct-browser-access": "true" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
+          model: "claude-haiku-4-5-20251001",
           max_tokens: 1000,
           system: `You are a Missing Person Report Guide for PleaseLookForMe ATL — a community organization helping families find missing loved ones. 
 
@@ -315,7 +315,7 @@ function AdminPanel({ cases, setCases, onClose }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-api-key': import.meta.env.VITE_ANTHROPIC_KEY, 'anthropic-dangerous-direct-browser-access': 'true' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-haiku-4-5-20251001',
           max_tokens: 600,
           tools: [{ type: 'web_search_20250305', name: 'web_search' }],
           system: 'You help extract missing person case details from NCMEC (National Center for Missing & Exploited Children). When given a case number, search for it and extract the details. Respond ONLY with a JSON object — no markdown, no explanation. The JSON must have exactly these fields: name (string), age (number), gender (string: Male/Female/Unknown), description (string — physical description only, 1-2 sentences), lastSeenDate (string), lastSeenLocation (string: City, State), status (string: active/amber/silver/critical), missingSince (string: e.g. "3 YEARS" or "2 MONTHS" or "JUST REPORTED"). If a field is unknown use empty string or 0.',
@@ -816,7 +816,7 @@ function LegalBotScreen() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-api-key': import.meta.env.VITE_ANTHROPIC_KEY, 'anthropic-dangerous-direct-browser-access': 'true' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-haiku-4-5-20251001',
           max_tokens: 1000,
           system: `You are a Missing Persons Legal Guide for PleaseLookForMe ATL, a community advocacy organization. You provide state-specific legal guidance to families trying to report missing loved ones.
 
@@ -1088,7 +1088,7 @@ function FlyerScreen({ setScreen }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-api-key': import.meta.env.VITE_ANTHROPIC_KEY, 'anthropic-dangerous-direct-browser-access': 'true' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-haiku-4-5-20251001',
           max_tokens: 500,
           system: 'Extract missing person details from flyer text and return ONLY a JSON object with these exact keys: name, nickname, age, height, weight, eyes, hair, missingSince, lastSeen, description. Use empty string for unknown fields. No markdown, no explanation.',
           messages: [{ role: 'user', content: flyerText }]
